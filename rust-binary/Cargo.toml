@@ -1,0 +1,22 @@
+[package]
+name = "PACKAGE_NAME"
+version = "0.0.0-semantic-release-managed"
+edition = "2021"
+authors = ["Eric Crosson <eric.s.crosson@utexas.edi>"]
+license = "MIT OR Apache-2.0"
+description = "DESCRIPTION"
+readme = "README.md"
+homepage = "https://github.com/GIT_ORGANIZATION/PACKAGE_NAME"
+exclude = [
+  "/.envrc",
+  "/.github",
+  "/.gitignore",
+  "/flake.{lock,nix}"
+]
+
+[dependencies]
+
+[profile.release]
+lto = true
+codegen-units = 1
+strip = true

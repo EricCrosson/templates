@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+set -o errexit
+set -o nounset
+set -o pipefail
+
+origin_url="$(git remote get-url origin)"
+git_organization="$(dirname "$origin_url" | cut -d: -f2)"
+repository_name="$(basename -s .git "$origin_url")"
+
+for file in Cargo.toml README.md
+do
+  sed -i "s/GIT_ORGANIZATION/$git_organization/g" "$file"
+  sed -i "s/PACKAGE_NAME/$repository_name/g" "$file"
+done
+
+rm -f -- "${BASH_SOURCE[0]}"
