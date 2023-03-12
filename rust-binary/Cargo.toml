@@ -16,6 +16,11 @@ exclude = [
 
 [dependencies]
 
+[profile.dev]
+# Disabling debug info speeds up builds significantly,
+# and we don't rely on it for debugging very frequently.
+debug = 0
+
 [profile.release]
 lto = true
 codegen-units = 1
